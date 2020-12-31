@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist/* && tsc && yarn copyfiles",
-    "copyfiles": "copyfiles -V 'graphql/**/*.{graphql,sqlite3}' dist/",
+    "copyfiles": "copyfiles -V \"graphql/**/*.{graphql,sqlite3}\" dist/",
     "watch": "tsc -w",
     "prestart": "yarn run build",
     "start": "func start",
