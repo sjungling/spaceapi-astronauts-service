@@ -1,4 +1,5 @@
 # Node.js
+
 # Build a general Node.js project with npm.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
@@ -19,3 +20,10 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+- task: AzureFunctionApp@1
+  inputs:
+    azureSubscription: 'Azure subscription 1(036f82dc-170c-4faf-999e-a5f08655b838)'
+    appType: 'functionApp'
+    appName: 'spaceapi-astronauts-service'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'
