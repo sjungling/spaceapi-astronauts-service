@@ -1,0 +1,9 @@
+overwrite: true
+schema:
+  - "graphql/**/*.graphql"
+generates:
+  ./schema.graphql:
+    plugins:
+      - schema-ast
+    config:
+      federation: true

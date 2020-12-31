@@ -1,0 +1,24 @@
+# import NotFound from '../common.graphql'
+
+type Query {
+  """
+  Fetch all Astronauts from the Apollo space program
+  """
+  astronauts: [Astronaut]!
+  """
+  Find an Astronaut by their ID
+  May return a `NotFound`
+  """
+  astronaut(id: Int): AstronautResult!
+}
+
+union AstronautResult = Astronaut | NotFound
+
+type Astronaut {
+  """
+  ID is an auto-incrementing value from data store
+  """
+  id: ID!
+  firstName: String!
+  lastName: String!
+}

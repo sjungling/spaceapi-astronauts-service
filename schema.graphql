@@ -1,0 +1,33 @@
+directive @external on FIELD_DEFINITION
+
+directive @requires(fields: _FieldSet!) on FIELD_DEFINITION
+
+directive @provides(fields: _FieldSet!) on FIELD_DEFINITION
+
+directive @key(fields: _FieldSet!) on OBJECT | INTERFACE
+
+type Query {
+  """Fetch all Astronauts from the Apollo space program"""
+  astronauts: [Astronaut]!
+
+  """
+  Find an Astronaut by their ID
+  May return a `NotFound`
+  """
+  astronaut(id: Int): AstronautResult!
+}
+
+type Astronaut {
+  """ID is an auto-incrementing value from data store"""
+  id: ID!
+  firstName: String!
+  lastName: String!
+}
+
+union AstronautResult = Astronaut | NotFound
+
+type NotFound {
+  message: String!
+}
+
+scalar _FieldSet
