@@ -20,10 +20,13 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
-- task: AzureFunctionApp@1
+- task: ArchiveFiles@2
+  displayName: "Archive files"
   inputs:
-    azureSubscription: 'Azure subscription 1(036f82dc-170c-4faf-999e-a5f08655b838)'
-    appType: 'functionApp'
-    appName: 'spaceapi-astronauts-service'
-    package: 'dist/'
-    deploymentMethod: 'auto'
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+    includeRootFolder: false
+    archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
+    artifactName: 'drop'
