@@ -19,11 +19,10 @@ steps:
   displayName: "Archive files"
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-    includeRootFolder: false
+    includeRootFolder: true
     archiveType: 'zip'
     archiveFile: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
-    replaceExistingArchive: true
-    verbose: true
+    replaceExistingArchive: false
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
@@ -33,9 +32,6 @@ steps:
     azureSubscription: 'Azure subscription 1(036f82dc-170c-4faf-999e-a5f08655b838)'
     appType: 'functionApp'
     appName: 'spaceapi-astronauts-service'
-    deployToSlotOrASE: true
-    resourceGroupName: 'spaceapiastronautsservic'
-    slotName: 'production'
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    deploymentMethod: 'runFromPackage'
+    deploymentMethod: 'auto'
 
