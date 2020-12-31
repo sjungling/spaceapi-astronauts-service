@@ -25,5 +25,5 @@ steps:
     azureSubscription: 'Azure subscription 1(036f82dc-170c-4faf-999e-a5f08655b838)'
     appType: 'functionApp'
     appName: 'spaceapi-astronauts-service'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: 'dist/'
     deploymentMethod: 'auto'
