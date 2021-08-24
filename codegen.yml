@@ -1,4 +1,4 @@
-overwrite: false
+overwrite: true
 schema: "schema.graphql"
 generates:
   ./graphql/schema.ts:
