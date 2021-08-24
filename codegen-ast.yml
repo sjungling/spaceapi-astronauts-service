@@ -1,4 +1,4 @@
-overwrite: true
+overwrite: false
 schema:
   - "graphql/**/*.graphql"
 generates:
